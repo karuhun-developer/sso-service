@@ -10,6 +10,9 @@ Route::group([
 
     Route::get('/', App\Livewire\Dashboard::class)->name('dashboard');
 
+    // Passport Client
+    Route::get('/clients', App\Livewire\Cms\Passport\Client::class)->name('passport.client');
+
     // Management Menu
     Route::get('/management/menu', App\Livewire\Cms\Management\Menu::class)->name('management.menu');
     Route::get('/management/menu/{menu}', App\Livewire\Cms\Management\Menu\Child::class)->name('management.menu.child');

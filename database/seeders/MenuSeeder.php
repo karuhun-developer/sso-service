@@ -21,7 +21,23 @@ class MenuSeeder extends Seeder
                 'route' => 'cms.dashboard',
                 'ordering' => '1',
             ],
-            // Master Data
+            // Passport
+            [
+                'name' => 'Passport',
+                'on' => 'cms',
+                'type' => 'header',
+                'icon' => '#',
+                'route' => '#',
+                'ordering' => '20',
+            ],
+            [
+                'name' => 'Clients',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'fa fa-user-secret',
+                'route' => 'cms.passport.client',
+                'ordering' => '21',
+            ],
 
             // Settings
             [
