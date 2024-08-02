@@ -50,7 +50,7 @@ class FormClient extends Form implements FormCrudInterface
     // Update data
     public function update() {
         $clientRepo = new ClientRepository;
-        $clientRepo->update($this->id, $this->name, $this->redirect);
+        $clientRepo->update(Client::find($this->id), $this->name, $this->redirect);
     }
 
     // Delete data
