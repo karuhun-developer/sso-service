@@ -8,8 +8,8 @@
             <h5 class="card-title">{{ $title ?? '' }} Data</h5>
         </div>
         <div class="card-body">
+            <x-acc-header :$originRoute />
             <div class="table-responsive">
-                <x-acc-header :$originRoute />
                 <table class="table table-hover table-striped" style="width:100%">
                     <thead>
                         <tr>
@@ -24,7 +24,7 @@
                             <tr>
                                 <td>{{ $d->name }}</td>
                                 <td>{{ $d->email }}</td>
-                                <td>{{ $d->role }}</td>
+                                <td>{{ $d->roles[0]->name }}</td>
                                 <x-acc-update-delete :id="$d->id" :$originRoute>
                                     <button class="btn btn-primary"
                                         wire:click="editPassword('{{ $d->id }}')">
@@ -50,7 +50,7 @@
     </div>
 
     {{-- Create / Update Modal --}}
-    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}" :$isModaOpen>
+    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}" :isModaOpen="$modals['defaultModal']">
         <x-acc-form submit="save">
             <div class="col-md-12">
                 <div class="mb-3">
@@ -87,7 +87,7 @@
     </x-acc-modal>
 
     {{-- Change password --}}
-    <x-acc-modal title="Change Password {{ $form->name }}" id="acc-modal-password" :isModaOpen="$isModalPasswordOpen" closeModalFunction="closeModalPassword">
+    <x-acc-modal title="Change Password {{ $form->name }}" id="acc-modal-password" :isModaOpen="$modals['updatePasswordModal']" closeModalFunction="closeModalPassword">
         <x-acc-form submit="changePassword">
             <div class="col-md-12">
                 <div class="mb-3">

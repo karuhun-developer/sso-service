@@ -8,8 +8,8 @@
             <h5 class="card-title">{{ $title ?? '' }} Data</h5>
         </div>
         <div class="card-body">
+            <x-acc-header :$originRoute />
             <div class="table-responsive">
-                <x-acc-header :$originRoute />
                 <table class="table table-hover table-striped" style="width:100%">
                     <thead>
                         <tr>
@@ -46,7 +46,7 @@
     </div>
 
     {{-- Create / Update Modal --}}
-    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}" :$isModaOpen>
+    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}" :isModaOpen="$modals['defaultModal']">
         <x-acc-form submit="save">
             <div class="col-md-12">
                 <div class="mb-3">
